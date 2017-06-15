@@ -1,0 +1,6 @@
+app:
+  build: .
+  volumes:
+    - .:/var/www
+  ports:
+    - "8081:80"
