@@ -5,6 +5,7 @@ session_set_cookie_params(14 * 86400);//2 weeks session expiry time
 session_start();
 
 require_once __DIR__ . '/../src/phorkie/autoload.php';
+/*
 set_exception_handler(
     function ($e) {
         if ($e instanceof Exception) {
@@ -30,6 +31,7 @@ set_exception_handler(
         exit();
     }
 );
+*/
 
 require_once __DIR__ . '/../data/config.default.php';
 $pharFile = \Phar::running();
@@ -67,24 +69,27 @@ if (!isset($_SESSION['email'])) {
     $_SESSION['email'] = $GLOBALS['phorkie']['auth']['anonymousEmail'];
 }
 
-\Twig_Autoloader::register();
-
 $loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
 $twig = new \Twig_Environment(
     $loader,
     array(
         //'cache' => '/path/to/compilation_cache',
-        'debug' => true
+        //'debug' => true
     )
 );
-$twig->addFunction('ntext', new \Twig_Function_Function('\phorkie\ntext'));
-function ntext($value, $singular, $plural)
-{
-    if (abs($value) == 1) {
-        return sprintf($singular, $value);
-    }
-    return sprintf($plural, $value);
-}
+$twig->addFunction(
+    new \Twig_Function(
+        'ntext',
+        function ($value, $singular, $plural)
+        {
+            if (abs($value) == 1) {
+                return sprintf($singular, $value);
+            }
+            return sprintf($plural, $value);
+        }
+    )
+);
+
 //$twig->addExtension(new \Twig_Extension_Debug());
 
 if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
