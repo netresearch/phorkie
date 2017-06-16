@@ -1,6 +1,6 @@
 {% set links = pager.getLinks() %}
 {% if pager.numPages > 1 %}
-<div class="pagination pagination-centered">
+<nav class="pagination pagination-centered">
 <ul>
  {% if links.first %}
  <li>
@@ -44,5 +44,5 @@
  <li class="disabled"><a href="#">last</a></li>
  {% endif %}
 </ul>
-</div>
+</nav>
 {% endif %}

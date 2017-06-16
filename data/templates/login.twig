@@ -2,12 +2,12 @@
 {% block title %}Login{% endblock %}
 
 {% block meta %}
-<meta name="robots" content="noindex"/>
+<meta name="robots" content="noindex">
 {% endblock %}
 
 {% block content %}
 
-<link rel="stylesheet" href="css/openid.css" />
+<link rel="stylesheet" href="css/openid.css">
 
 <form method="post" action="login" id="openid_form">
 
@@ -16,8 +16,8 @@
   <div id="openid_choice" style="display: block; ">
     <div id="openid_input_area">
       <p><label for="openid_url">Enter your OpenID URL:</label></p>
-      <input id="openid_url" type="text" name="openid_url" value="{{openid}}" />
-      <input class="btn btn-primary" id="openid_submit" type="submit" value="Sign in" />
+      <input id="openid_url" type="url" name="openid_url" value="{{openid}}">
+      <input class="btn btn-primary" id="openid_submit" type="submit" value="Sign in">
     </div>
   </div>
 </fieldset>

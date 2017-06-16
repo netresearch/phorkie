@@ -5,11 +5,11 @@
  <li class="row-fluid {% if commit.hash == repo.hash or (repo.hash == '' and loop.first) %}active{%endif%}">
   {% spaceless %}
   {% for dot in commit.getDots %}
-  <img src="phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4"/>
+  <img src="phorkie/dot-{{dot}}.png" alt="" style="padding-left:1px" width="4" height="4">
   {% endfor %}
   {% endspaceless %}
   <a class="hash" rel="nofollow" href="{{repo.getLink('revision', commit.hash)}}">{{commit.hash|slice(0, 6)}}</a>
-  <img class="avatar-tiny" src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20" height="20"/>
+  <img class="avatar-tiny" src="{{commit.getIconUrl}}" alt="{{commit.committerName}}" title="{{commit.committerName}}" width="20" height="20">
   <span class="nobr" title="{{commit.committerTime|date('c')}}">
    <span class="indent visible-tablet"></span>
    {{dh.get(commit.committerTime)}}

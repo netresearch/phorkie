@@ -10,7 +10,7 @@
    <a href="{{webpage}}">{{origin.getTitle()}}</a>
    {% set webpagedomain = htmlhelper.getDomain(webpage) %}
    {% if webpagedomain and domain != webpagedomain %}
-   <br/><i class="forkdomain">{{webpagedomain}}</i>
+   <br><i class="forkdomain">{{webpagedomain}}</i>
    {% endif %}
   {% else %}
    {{origin.getTitle()}}
@@ -32,7 +32,7 @@
     <a href="{{webpage}}">{{remote.getTitle()}}</a>
     {% set webpagedomain = htmlhelper.getDomain(webpage) %}
     {% if webpagedomain and domain != webpagedomain %}
-    <br/><i class="forkdomain">{{webpagedomain}}</i>
+    <br><i class="forkdomain">{{webpagedomain}}</i>
     {% endif %}
    {% else %}
     {{remote.getTitle()}}

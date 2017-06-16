@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html lang="en">
  <head>
-  <base href="{{baseurl}}" />
-  <meta charset="utf-8" />
-  <link rel="stylesheet" href="css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/font-awesome.css"/>
-  <link rel="stylesheet" href="css/phorkie.css"/>
+  <base href="{{baseurl}}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/phorkie.css">
   {% if css %}
-  <link rel="stylesheet" href="{{css}}"/>
+  <link rel="stylesheet" href="{{css}}">
   {% endif %}
   {% if iconpng %}
-  <link rel="icon" href="{{iconpng}}" type="image/png"/>
+  <link rel="icon" href="{{iconpng}}" type="image/png">
   {% else %}
-  <link rel="icon" href="favicon.ico"/>
+  <link rel="icon" href="favicon.ico">
   {% endif %}
   <title>{% block title %}{% endblock %} - {{title}}</title>
   <script src="js/jquery.js"></script>
@@ -26,7 +26,7 @@
   <div class="navbar navbar-inverse navbar-static-top">
    <div class="navbar-inner">
     <div class="container">
-     <ul class="nav">
+     <nav class="nav">
       <li>
        <a class="brand" href="{{baseurl}}">{{title}}</a>
       </li>
@@ -39,15 +39,15 @@
       {% if db.adapter %}
       <li class="nav-collapse">
        <form class="span4 pull-right navbar-form" action="search" method="get">
-        <input type="text" class="search-query" name="q" placeholder="Search" value="{{query}}"/>
+        <input type="search" class="search-query" name="q" placeholder="Search" value="{{query}}">
        </form>
       </li>
       {% endif %}
-     </ul>
-     <ul class="nav pull-right">
+     </nav>
+     <nav class="nav pull-right">
       {% if identity %}
       <li>
-       <a href="user"><img class="avatar-tiny" src="{{htmlhelper.getIconUrl(email, 20)}}" width="20" height="20" /> {{name}}</a>
+       <a href="user"><img class="avatar-tiny" src="{{htmlhelper.getIconUrl(email, 20)}}" width="20" height="20"> {{name}}</a>
       </li>
       {% endif %}
       {% if db.adapter %}
@@ -68,11 +68,12 @@
        <a href="login">Login</a>
       </li>
       {% endif %}
-     </ul>
+     </nav>
     </div>
    </div>
   </div>
 
+  <body>
   <div class="container">
    <div class="row">
     <div class="span9">
@@ -90,13 +91,14 @@
     </div>
    </div>
   </div>
+  </body>
 
-  <div class="container footer">
+  <footer class="container footer">
    <a href="https://cweiske.de/phorkie.htm">phorkie</a>,
    the self-hosted, git-based pastebin software is available under the
    <a href="http://www.gnu.org/licenses/agpl-3.0.html">
     <abbr title="GNU Affero General Public License">AGPL</abbr></a>.
-  </div>
+  </footer>
   {% if autologin %}
   <script src="js/autologin.js"></script>
   {% endif %}
