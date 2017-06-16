@@ -8,7 +8,7 @@ RUN apt-get update \
  && apt-get install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends \
     git file \
     --no-install-recommends \
- && docker-php-ext-install -j$(nproc) opcache \
+ && docker-php-ext-install -j$(nproc) opcache mbstring \
 # clean up
  && apt-get autoremove \
  && apt-get clean -y \
