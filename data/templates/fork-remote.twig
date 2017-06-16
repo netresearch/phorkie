@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}Fork remote paste{% endblock %}
 
 {% block meta %}
@@ -14,10 +14,10 @@
   </div>
  {% endif %}
 
- {% include 'fork-remote-new.htm' %}
+ {% include 'fork-remote-new.twig' %}
 
  {% if urls %}
-  {% include 'fork-remote-multiple.htm' %}
+  {% include 'fork-remote-multiple.twig' %}
  {% endif %}
 
 {% endblock %}

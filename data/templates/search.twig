@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}Search results{% endblock %}
 
 {% block meta %}
@@ -16,10 +16,10 @@
  </p>
  <ul class="nav nav-pills nav-stacked">
  {% for repo in sres.repos %}
-   {% include 'repo-list.htm' %}
+   {% include 'repo-list.twig' %}
  {% endfor %}
  </ul>
- {% include 'pager.htm' %}
+ {% include 'pager.twig' %}
 {% endif %}
 
 {% endblock %}

@@ -2,6 +2,6 @@
 <link rel="stylesheet" href="{{htmlhelper.fullUrl('css/embed.css')}}"/>
 <div class="phork" id="{{repo.id}}">
 {% for file in repo.getFiles %}
-    {% include 'embed-part-file.htm' %}
+    {% include 'embed-part-file.twig' %}
 {% endfor %}
 </div>

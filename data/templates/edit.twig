@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}Edit paste{% endblock %}
 
 {% block meta %}
@@ -17,22 +17,22 @@
 
  {% for fileid, file in repo.getFiles %}
   {% if not singlefile or file == singlefile %}
-    {% include 'edit-file.htm' with {'file': file, 'fileid': fileid, 'newfile': false} %}
+    {% include 'edit-file.twig' with {'file': file, 'fileid': fileid, 'newfile': false} %}
   {% endif %}
  {% endfor %}
 
  {% if singlefile == "newfile" %}
-   {% include 'edit-file.htm' with {'file': null, 'fileid': 'newfile', 'newfile': true} %}
+   {% include 'edit-file.twig' with {'file': null, 'fileid': 'newfile', 'newfile': true} %}
  {% endif %}
 
- {% include 'edit-add.htm' %}
+ {% include 'edit-add.twig' %}
 
   <div class="row-fluid formbuttons">
    <div class="span4">
     <a class="btn" href="{{repo.getLink('display')}}">Cancel</a>
    </div>
    <div class="span4" style="text-align: center">
-    {% include 'edit-add-button.htm' %}
+    {% include 'edit-add-button.twig' %}
    </div>
    <div class="span4" style="text-align: right">
     <button class="btn btn-primary" type="submit">
@@ -51,5 +51,5 @@ $(document).ready(function() {
 {% endblock %}
 
 {% block sidebar %}
- {% include 'display-sidebar-history.htm' %}
+ {% include 'display-sidebar-history.twig' %}
 {% endblock %}

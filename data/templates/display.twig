@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}{{repo.getTitle}}{% endblock %}
 
 {% block meta %}
@@ -14,18 +14,18 @@
 {% endblock %}
 
 {% block content %}
- {% include 'display-head.htm' %}
+ {% include 'display-head.twig' %}
 
 {% for file in repo.getFiles %}
- {% include 'display-file.htm' %}
+ {% include 'display-file.twig' %}
 {% endfor %}
 
- {% include 'display-foot.htm' %}
+ {% include 'display-foot.twig' %}
 {% endblock %}
 
 {% block sidebar %}
- {% include 'display-sidebar-owner.htm' %}
- {% include 'display-sidebar-fork.htm' %}
- {% include 'display-sidebar-history.htm' %}
- {% include 'display-sidebar-urls.htm' %}
+ {% include 'display-sidebar-owner.twig' %}
+ {% include 'display-sidebar-fork.twig' %}
+ {% include 'display-sidebar-history.twig' %}
+ {% include 'display-sidebar-urls.twig' %}
 {% endblock %}

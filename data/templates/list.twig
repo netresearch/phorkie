@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}List of all pastes{% endblock %}
 
 {% block meta %}
@@ -10,11 +10,11 @@
 <div class="content-padding-fix"></div>
 <ul class="nav nav-pills nav-stacked">
 {% for repo in repos %}
- {% include 'repo-list.htm' %}
+ {% include 'repo-list.twig' %}
 {% endfor %}
 </ul>
 
- {% include 'pager.htm' %}
+ {% include 'pager.twig' %}
 
 {% endblock %}
 
@@ -23,7 +23,7 @@
   <h4>Recently updated</h4>
   <ul class="unstyled">
   {% for repo in recents.repos %}
-   {% include 'repo-sidebar-list.htm' %}
+   {% include 'repo-sidebar-list.twig' %}
   {% endfor %}
   </ul>
  {% endif %}

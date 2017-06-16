@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}
  Tool results: {{repo.getTitle}}
 {% endblock %}
@@ -22,7 +22,7 @@
   </div>
  {% endfor %}
 
- {% include 'display-file.htm' %}
+ {% include 'display-file.twig' %}
 
  <div class="annotations">
  {% for number,lineinfos in toolres.annotations if number != 'general' %}
@@ -34,6 +34,6 @@
  {% endfor %}
  </div>
 
- {% include 'display-foot.htm' %}
+ {% include 'display-foot.twig' %}
 {% endblock %}
 

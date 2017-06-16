@@ -1,4 +1,4 @@
-{% extends "base.htm" %}
+{% extends "base.twig" %}
 {% block title %}{{repo.getTitle}} - revision {{repo.hash}}{% endblock %}
 
 {% block meta %}
@@ -6,14 +6,14 @@
 {% endblock %}
 
 {% block content %}
- {% include 'revision-head.htm' %}
+ {% include 'revision-head.twig' %}
 
 {% for file in repo.getFiles %}
- {% include 'display-file.htm' %}
+ {% include 'display-file.twig' %}
 {% endfor %}
 
 {% endblock %}
 
 {% block sidebar %}
- {% include 'display-sidebar-history.htm' %}
+ {% include 'display-sidebar-history.twig' %}
 {% endblock %}

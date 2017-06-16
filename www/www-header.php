@@ -70,6 +70,8 @@ if (!isset($_SESSION['email'])) {
 }
 
 $loader = new \Twig_Loader_Filesystem($GLOBALS['phorkie']['cfg']['tpl']);
+
+/* @global \Twig_Environment $twig */
 $twig = new \Twig_Environment(
     $loader,
     array(
@@ -90,14 +92,23 @@ $twig->addFunction(
     )
 );
 
-//$twig->addExtension(new \Twig_Extension_Debug());
-
 if (!isset($noSecurityCheck) || $noSecurityCheck !== true) {
     require __DIR__ . '/www-security.php';
 }
 
-function render($tplname, $vars = array(), $return = false)
+/**
+ * Render template.
+ *
+ * @param string $tplName Name of template to render
+ * @param array  $vars    Array of variables added to teh template
+ * @param bool   $return  If true, render output is returned as string instead of printed to stdout
+ *
+ * @return string
+ */
+function render($tplName, $vars = array(), $return = false)
 {
+    global $twig;
+
     $vars['baseurl'] = '/';
     if (!empty($GLOBALS['phorkie']['cfg']['baseurl'])) {
         $vars['baseurl'] = $GLOBALS['phorkie']['cfg']['baseurl'];
@@ -121,12 +132,10 @@ function render($tplname, $vars = array(), $return = false)
     }
     $vars['suggestSetupCheck'] = $GLOBALS['phorkie']['suggestSetupCheck'];
 
-    $template = $GLOBALS['twig']->loadTemplate($tplname . '.htm');
-
     if ($return) {
-        return $template->render($vars);
+        return $twig->render($tplName . '.twig', $vars);
     } else {
-        echo $template->render($vars);
+        $twig->display($tplName . '.twig', $vars);
     }
 }
 
