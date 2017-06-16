@@ -1,0 +1,15 @@
+phorkie build container
+-----------------------
+
+Run this buildbox through docker-compose in phorkie root directory.
+
+Command usage:
+
+    docker-compose run build <command>
+
+Commands:
+
+    build      Runs build and setup commands on phorkie directory
+               - executes composer install
+               - creates missing folders
+

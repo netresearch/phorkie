@@ -4,3 +4,9 @@ app:
     - .:/var/www
   ports:
     - "8081:80"
+  restart: always
+
+build:
+  build: ./build/
+  volumes:
+    - .:/var/www
