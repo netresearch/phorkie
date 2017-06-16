@@ -19,3 +19,12 @@ RUN apt-get update \
  && rm -f /var/cache/apt/*.bin
 
 RUN a2enmod rewrite
+
+RUN mkdir -p cache www/repos/git www/repos/work \
+ && chmod og+w cache www/repos/git www/repos/work
+
+ADD . /var/www
+
+VOLUME cache
+VOLUME www/repos/git
+VOLUME www/repos/work
