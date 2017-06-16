@@ -65,8 +65,46 @@ for all released versions.
 Installation
 ============
 
+Docker
+======
+
+Requirements
+------------
+
+- Docker
+- docker-compose
+
+Instructions
+------------
+
+after running git clone, just fire up the docker containers::
+
+   docker-compose run build build // to install dependencies
+   docker-compose up -d // to start containers in back ground
+
+after this, go to: http://localhost.8081/
+
+Configuration
+-------------
+
+Copy data/config.php.dist to data/config.php and change it to your needs.
+
+Optionally add your own docker-compose.override.yml and tweak container configuration to your needs.
+
+
 .phar
 =====
+
+Requirements
+------------
+
+- running web server
+- PHP 5.3+ FPM or module in web server
+- git client
+
+Instructions
+------------
+
 Download ``phorkie-0.8.0.phar`` and put it in your web server's document root
 directory.
 
@@ -88,6 +126,18 @@ __ http://cweiske.de/tagebuch/phar-webserver.htm
 
 Zip package
 ===========
+
+Requirements
+------------
+
+- running web server
+- PHP 5.3+ FPM or module in web server
+- git v1.7.5+ client
+- composer
+
+Instructions
+------------
+
 1. Unzip the phorkie release file::
 
    $ tar xjvf phorkie-0.8.0.tar.bz2
@@ -97,7 +147,7 @@ Zip package
    $ mkdir -p www/repos/git www/repos/work
    $ chmod og+w www/repos/git www/repos/work
 
-3. Install dependencies_
+3. run composer install or update - as you wish or prefer
 
 4. Copy ``data/config.php.dist`` to ``data/config.php`` and adjust it
    to your needs::
@@ -123,51 +173,6 @@ Zip package
 8. If you like phorkie, send a mail to `cweiske+phorkie@cweiske.de`__
 
 __ mailto:cweiske+phorkie@cweiske.de
-
-
-Dependencies
-============
-phorkie stands on the shoulders of giants.
-
-It requires the following programs to be installed
-on your machine:
-
-- Git v1.7.5 or later
-- PHP v5.3.0 or later
-
-  - optionally the ``mbstring`` extension
-- PEAR v1.9.2 or later
-
-::
-
-  $ pear install versioncontrol_git-alpha
-  $ pear install services_libravatar-alpha
-  $ pear install http_request2
-  $ pear install pager
-  $ pear install date_humandiff-alpha
-  $ pear install openid-alpha
-
-  $ pear channel-discover pear.twig-project.org
-  $ pear install twig/Twig
-
-  $ pear channel-discover pear.geshi.org
-  $ pear install geshi/geshi
-
-  $ pear channel-discover zustellzentrum.cweiske.de
-  $ pear install zz/mime_type_plaindetect-alpha
-
-  $ pear channel-discover pear.michelf.ca
-  $ pear install michelf/Markdown
-
-  $ pear channel-discover pear2.php.net
-  $ pear install pear2/pear2_services_linkback-alpha
-
-
-You can use composer to install all dependencies automatically::
-
-  $ composer install
-
-Note that the ``.phar`` package already contains all dependencies.
 
 
 ======
