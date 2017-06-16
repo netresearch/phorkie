@@ -1,3 +1,9 @@
+
+* replace pear/openid with hybridauth
+* add config option for default OpenID URL
+* replace pear repository packages with packagist packages in composer.json
+* update Twig to version 2
+
 Version 0.8.0 - 2017-04-19
 --------------------------
 * Add support for git 2.11
