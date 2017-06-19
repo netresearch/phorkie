@@ -1,4 +1,5 @@
 
+* add Docker support (Dockerfile and docker-compose.yml)
 * replace pear/openid with hybridauth
 * add config option for default OpenID URL
 * replace pear repository packages with packagist packages in composer.json
