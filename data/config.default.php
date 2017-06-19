@@ -6,7 +6,7 @@
  */
 $pharFile = \Phar::running();
 if ($pharFile == '') {
-    $phorkieDir = __DIR__ . '/../';
+    $phorkieDir = realpath(__DIR__ . '/../') . '/';
     $wwwDir = $phorkieDir . 'www/';
 } else {
     //remove phar:// from the path

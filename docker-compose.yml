@@ -1,7 +1,21 @@
 app:
   build: .
   volumes:
-    - .:/var/www
+    - .:/srv/www:ro
+    - ./cache:/srv/www/cache:rw
+    - ./www/repos:/srv/www/www/repos:rw
+  restart: always
+
+httpd:
+  image: nginx:alpine
+  volumes:
+    - ./setup/etc/nginx/php_fpm.conf:/etc/nginx/php_fpm.conf:ro
+    - ./setup/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro
+    - .:/srv/www:ro
+#  volumes_from:
+#    - app:ro
+  links:
+    - app:phpfpm
   ports:
     - "8081:80"
   restart: always
@@ -9,4 +23,4 @@ app:
 build:
   build: ./build/
   volumes:
-    - .:/var/www
+    - .:/srv/www

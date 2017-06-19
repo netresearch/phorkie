@@ -1,30 +1,24 @@
-FROM php:7-apache
+FROM php:7-fpm-alpine
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TERM=xterm
+RUN set -ex \
+ && echo "http://mirror1.hs-esslingen.de/pub/Mirrors/alpine/v3.4/main" > /etc/apk/repositories \
+ && apk update \
+ && apk upgrade --available \
+ && apk add git file \
+ && docker-php-ext-install opcache mbstring \
+# Clean up anything else
+ && rm -rf \
+    /tmp/* \
+    /var/tmp/* \
+    /var/cache/apk/*
 
-RUN apt-get update \
- && apt-get upgrade -y -o Dpkg::Options::="--force-confnew" --no-install-recommends \
- && apt-get install -y -o Dpkg::Options::="--force-confnew" --no-install-recommends \
-    git file \
-    --no-install-recommends \
- && docker-php-ext-install -j$(nproc) opcache mbstring \
-# clean up
- && apt-get autoremove \
- && apt-get clean -y \
- && rm -rf /tmp/* \
- && rm -rf /var/tmp/* \
- && for logs in `find /var/log -type f`; do > $logs; done \
- && rm -rf /var/lib/apt/lists/* \
- && rm -f /var/cache/apt/*.bin
-
-RUN a2enmod rewrite
+WORKDIR /srv/www
 
 RUN mkdir -p cache www/repos/git www/repos/work \
  && chmod og+w cache www/repos/git www/repos/work
 
-ADD . /var/www
+ADD . /srv/www
 
-VOLUME cache
-VOLUME www/repos/git
-VOLUME www/repos/work
+VOLUME /srv/www/cache
+VOLUME /srv/www/www/repos/git
+VOLUME /srv/www/www/repos/work

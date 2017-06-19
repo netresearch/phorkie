@@ -11,9 +11,6 @@ RUN set -x \
     /var/tmp/* \
     /var/cache/apk/*
 
-RUN mkdir -p cache www/repos/git www/repos/work \
- && chmod og+w cache www/repos/git www/repos/work
-
 #
 # composer
 #

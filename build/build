@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ex
 
-cd /var/www
+cd /srv/www
 composer install
 
 mkdir -p cache www/repos/git www/repos/work
