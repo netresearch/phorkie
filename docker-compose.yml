@@ -4,6 +4,8 @@ app:
     - .:/srv/www:ro
     - ./cache:/srv/www/cache:rw
     - ./www/repos:/srv/www/www/repos:rw
+  links:
+    - search:search
   restart: always
 
 httpd:
@@ -18,6 +20,11 @@ httpd:
     - app:phpfpm
   ports:
     - "8081:80"
+  restart: always
+
+search:
+  build: ./search/
+#  image: elasticsearch:2-alpine
   restart: always
 
 build:
